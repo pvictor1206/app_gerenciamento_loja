@@ -8,8 +8,17 @@ class InputField extends StatelessWidget {
   final String hint;
   final bool obscure;
   final Stream<String> stream;
+  final Function(String) onChanged;
 
-  InputField({required this.icon, required this.hint, required this.obscure, required this.stream});
+  InputField(
+      {
+        required this.icon,
+        required this.hint,
+        required this.obscure,
+        required this.stream,
+        required this.onChanged,
+
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +26,7 @@ class InputField extends StatelessWidget {
       stream: stream,
       builder: (context, snapshot) {
         return TextField(
+          onChanged: onChanged,
           decoration: InputDecoration(
             icon: Icon(icon, color: Colors.white),
             hintText: hint,
@@ -27,7 +37,7 @@ class InputField extends StatelessWidget {
               bottom: 30,
               top: 30
             ),
-            errorText: snapshot.
+            //errorText: snapshot.hasError ? snapshot.error: null, //retrieve the error message from the stream and display it
           ),
           style: TextStyle(color: Colors.white),
           obscureText: obscure,
