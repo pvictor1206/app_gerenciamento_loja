@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: RaisedButton(
                           color: Colors.blue,
                             child: Text("Entrar"),
-                            onPressed: snapshot.hasData ? () {}: null,
+                            onPressed: snapshot.hasData ? _loginBloc.submit: null,
                           textColor: Colors.white,
                           disabledColor: Colors.blue.withAlpha(140),
                         ),
