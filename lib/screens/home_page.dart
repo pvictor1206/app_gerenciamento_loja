@@ -1,3 +1,4 @@
+import 'package:app_gerenciamento_loja/tabs/users_tap.dart';
 import 'package:flutter/material.dart';
 
 
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[850],
+      backgroundColor: Colors.blue,
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           canvasColor: Colors.white,
@@ -65,18 +66,20 @@ class _HomePageState extends State<HomePage> {
         ],
         ),
       ),
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (p){
-          setState(() {
-            _page = p;
-          });
-        },
-        children: [
-          Container(color: Colors.red),
-          Container(color: Colors.yellow),
-          Container(color: Colors.green)
-        ],
+      body: SafeArea(
+        child: PageView(
+          controller: _pageController,
+          onPageChanged: (p){
+            setState(() {
+              _page = p;
+            });
+          },
+          children: [
+            UsersTap(),
+            Container(color: Colors.yellow),
+            Container(color: Colors.green)
+          ],
+        ),
       ),
     );
   }
