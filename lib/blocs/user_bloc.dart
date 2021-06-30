@@ -24,10 +24,11 @@ class UserBloc extends BlocBase {
 
         switch(change.type){
           case DocumentChangeType.modified:
-            _users[uid] = change.doc.data();
+            _users[uid] =  change.doc.data as Map<String, dynamic>;
+            //_users[uid] = change.doc.data();
             break;
           case DocumentChangeType.modified:
-            _users[uid].addAll(change.doc.data());
+            _users[uid]!.addAll(change.doc.data as Map<String, dynamic>);
             break;
           case DocumentChangeType.removed:
             _users.remove(uid);
