@@ -1,4 +1,7 @@
+import 'package:app_gerenciamento_loja/blocs/user_bloc.dart';
 import 'package:app_gerenciamento_loja/widget/user_tile.dart';
+import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class UsersTap extends StatelessWidget {
@@ -6,6 +9,9 @@ class UsersTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final _userBloc = BlocProvider<UserBloc>(context);
+
     return Column(
       children: [
         Padding(

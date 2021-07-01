@@ -1,4 +1,7 @@
+import 'package:app_gerenciamento_loja/blocs/user_bloc.dart';
 import 'package:app_gerenciamento_loja/tabs/users_tap.dart';
+import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 
@@ -14,6 +17,8 @@ class _HomePageState extends State<HomePage> {
   late PageController _pageController;
   int _page = 0;
 
+  late UserBloc _userBloc;
+
   @override
   void initState() {
     super.initState();
@@ -26,6 +31,8 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
 
     _pageController.dispose();
+
+    _userBloc = UserBloc();
   }
 
   @override
@@ -67,18 +74,24 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: SafeArea(
-        child: PageView(
-          controller: _pageController,
-          onPageChanged: (p){
-            setState(() {
-              _page = p;
-            });
-          },
-          children: [
-            UsersTap(),
-            Container(color: Colors.yellow),
-            Container(color: Colors.green)
+        child: BlocProvider(
+          dependencies: [],
+          blocs: [
+            _userBloc as dynamic
           ],
+          child: PageView(
+            controller: _pageController,
+            onPageChanged: (p){
+              setState(() {
+                _page = p;
+              });
+            },
+            children: [
+              UsersTap(),
+              Container(color: Colors.yellow),
+              Container(color: Colors.green)
+            ],
+          ),
         ),
       ),
     );
