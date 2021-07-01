@@ -7,7 +7,10 @@ import 'package:rxdart/rxdart.dart';
 class UserBloc extends BlocBase {
 
 
-  final _usersController = BehaviorSubject();
+  final _usersController = BehaviorSubject<List>();
+
+  Stream<List> get outUsers => _usersController.stream;
+
   Map<String, Map<String, dynamic>> _users = {};
 
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -43,7 +46,7 @@ class UserBloc extends BlocBase {
   }
 
   void _subscribeToOrders(String uid) {
-    _users[uid]["subscription"] = _firestore.collection("users").doc(uid).collection("orders")
+    _users[uid]!["subscription"] = _firestore.collection("users").doc(uid).collection("orders")
         .snapshots().listen((orders) async {
 
           int numOrders = orders.docs.length;
@@ -70,7 +73,7 @@ class UserBloc extends BlocBase {
   }
 
   void _unsubscribeToOrders(String uid){
-    _users[uid]["subscription"].cancel();
+    _users[uid]!["subscription"].cancel();
   }
 
   @override
