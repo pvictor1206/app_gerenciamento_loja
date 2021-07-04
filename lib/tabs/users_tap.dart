@@ -51,12 +51,12 @@ class UsersTap extends StatelessWidget {
               else
                 return ListView.separated(
                     itemBuilder: (context, index){
-                      return UserTile(snapshot.data[index]);
+                      return UserTile(snapshot.data![index]);
                     },
                     separatorBuilder: (context, index){
                       return Divider();
                     },
-                    itemCount: snapshot.data.length
+                    itemCount: snapshot.data!.length
               );
             }
           ),

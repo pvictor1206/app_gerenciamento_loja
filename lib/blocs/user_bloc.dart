@@ -27,7 +27,7 @@ class UserBloc extends BlocBase {
     }
   }
 
-  List<Map<String, dynamic>> _filter(Stream search){
+  List<Map<String, dynamic>> _filter(String search){
     List<Map<String, dynamic>> filteredUsers = List.from(_users.values.toList());
     filteredUsers.retainWhere((user) {
       return user["name"].toUpperCase().contains(search.toUpperCase());
