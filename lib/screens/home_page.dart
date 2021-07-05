@@ -1,4 +1,5 @@
 import 'package:app_gerenciamento_loja/blocs/user_bloc.dart';
+import 'package:app_gerenciamento_loja/tabs/orders_tab.dart';
 import 'package:app_gerenciamento_loja/tabs/users_tap.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -88,7 +89,7 @@ class _HomePageState extends State<HomePage> {
             },
             children: [
               UsersTap(),
-              Container(color: Colors.yellow),
+              OrdersTab(),
               Container(color: Colors.green)
             ],
           ),

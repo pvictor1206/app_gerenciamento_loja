@@ -10,7 +10,7 @@ class UsersTap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final _userBloc =  BlocProvider.of<UserBloc>(context);
+    final _userBloc = BlocProvider.of<UserBloc>(context);
 
 
     return Column(
